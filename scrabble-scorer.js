@@ -57,7 +57,7 @@ let scrabble = {
     name: 'Scrabble',
     description: 'The traditional scoring algorithm.',
     scoreFunction:  
-    function(word, newPointStructure){ //scrabbleScore
+    function scrabbleScore(word, newPointStructure){
       let total=0;
       for (let i = 0; i < word.length; i++){
         total +=(newPointStructure[word[i].toLowerCase()]);
@@ -70,7 +70,7 @@ let scoreSimple = {
   name: "Simple Score",
   description: "Each letter is worth 1 point",
   scoreFunction:
-  function(word){ //simpleScore
+  function simpleScore(word){
     return word.length;
   }
 };
@@ -79,7 +79,7 @@ let bonusVowels = {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts. consonants are 1 pts.",
   scoreFunction:
-  function(word){ //vowelBonusScore
+  function vowelBonusScore(word){
    let total=0;
    let vowels=['a','e','i','o','u'];
    for (let i = 0; i < word.length; i++) {
@@ -123,7 +123,7 @@ function scorerPrompt() {
 }
 
 function getWord() {
-let word = input.question("Enter a word to be scored, or 'stop' to quit:");
+let word = input.question(" \n Enter a word to be scored, or 'stop' to quit:");
 return word.toLowerCase();
 }
 
