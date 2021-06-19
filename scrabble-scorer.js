@@ -56,28 +56,30 @@ let scrabbleScore;
 let scrabble = {
     name: 'Scrabble',
     description: 'The traditional scoring algorithm.',
-    scoreFunction:   function scrabbleScore(word, newPointStructure){
+    scoreFunction:  
+    function(word, newPointStructure){ //scrabbleScore
       let total=0;
       for (let i = 0; i < word.length; i++){
         total +=(newPointStructure[word[i].toLowerCase()]);
         }
       return total;
-    }
+    } 
 };
 
 let scoreSimple = {
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scoreFunction: function simpleScore(word){
+  scoreFunction:
+  function(word){ //simpleScore
     return word.length;
-    }
+  }
 };
 
 let bonusVowels = {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts. consonants are 1 pts.",
   scoreFunction:
-  function vowelBonusScore(word){
+  function(word){ //vowelBonusScore
    let total=0;
    let vowels=['a','e','i','o','u'];
    for (let i = 0; i < word.length; i++) {
@@ -88,7 +90,7 @@ let bonusVowels = {
      else {total += 1}
     }
     return total;
-  }
+  } 
 };
 
 let scoringAlgorithms = [scrabble, scoreSimple, bonusVowels];
