@@ -56,7 +56,7 @@ let scrabbleScore;
 let scrabble = {
     name: 'Scrabble',
     description: 'The traditional scoring algorithm.',
-    scoreFunction:   function (word, newPointStructure){
+    scoreFunction:   function scrabbleScore(word, newPointStructure){
       let total=0;
       for (let i = 0; i < word.length; i++){
         total +=(newPointStructure[word[i].toLowerCase()]);
@@ -68,7 +68,7 @@ let scrabble = {
 let scoreSimple = {
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scoreFunction: function (word){
+  scoreFunction: function simpleScore(word){
     return word.length;
     }
 };
@@ -77,7 +77,7 @@ let bonusVowels = {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts. consonants are 1 pts.",
   scoreFunction:
-  function(word){
+  function vowelBonusScore(word){
    let total=0;
    let vowels=['a','e','i','o','u'];
    for (let i = 0; i < word.length; i++) {
@@ -113,9 +113,9 @@ function scorerPrompt() {
     	break;
     }
      if(score === '2' || score === '1'){
-     console.log(`Score for '${newWord}' is:  ${scoringAlgorithms[score].scoreFunction(newWord)}`);
+     console.log(`\n Score for '${newWord}' is:  ${scoringAlgorithms[score].scoreFunction(newWord)}`);
     }else if(score === '0'){
-     console.log(`Score for '${newWord}' is ${scoringAlgorithms[score].scoreFunction(newWord, newPointStructure)} `)
+     console.log(`\n Score for '${newWord}' is ${scoringAlgorithms[score].scoreFunction(newWord, newPointStructure)} `)
     }
   }
 }
