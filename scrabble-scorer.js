@@ -76,17 +76,17 @@ let scoringAlgorithms =[
  {
   name:"Scrabble",
   description: "The traditional scoring algorithm",
-  scoreFunction:scrabbleScore
+  scoringFunction:scrabbleScore
  },
 {
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scoreFunction:simpleScore
+  scoringFunction:simpleScore
 },
 {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts. consonants are 1 pts.",
-  scoreFunction:vowelBonusScore
+  scoringFunction:vowelBonusScore
 }];
 
 function scorerPrompt() {
@@ -109,9 +109,9 @@ function scorerPrompt() {
     	break;
     }
      if(score === '2' || score === '1'){
-     console.log(`\n Score for '${newWord}' is:  ${scoringAlgorithms[score].scoreFunction(newWord)}`);
+     console.log(`\n Score for '${newWord}' is:  ${scoringAlgorithms[score].scoringFunction(newWord)}`);
     }else if(score === '0'){
-     console.log(`\n Score for '${newWord}' is ${scoringAlgorithms[score].scoreFunction(newWord, newPointStructure)} `)
+     console.log(`\n Score for '${newWord}' is ${scoringAlgorithms[score].scoringFunction(newWord, newPointStructure)} `)
     }
   }
 }
