@@ -49,37 +49,10 @@ function initialPrompt() {
 return welcome;
 };
 
-let simpleScore;
-let vowelBonusScore;
-let scrabbleScore;
-
-let scrabble = {
-    name: 'Scrabble',
-    description: 'The traditional scoring algorithm.',
-    scoreFunction:  
-    function scrabbleScore(word, newPointStructure){
-      let total=0;
-      for (let i = 0; i < word.length; i++){
-        total +=(newPointStructure[word[i].toLowerCase()]);
-        }
-      return total;
-    } 
-};
-
-let scoreSimple = {
-  name: "Simple Score",
-  description: "Each letter is worth 1 point",
-  scoreFunction:
-  function simpleScore(word){
-    return word.length;
-  }
-};
-
-let bonusVowels = {
-  name: "Bonus Vowels",
-  description: "Vowels are 3 pts. consonants are 1 pts.",
-  scoreFunction:
-  function vowelBonusScore(word){
+let simpleScore = function(word){
+      return word.length;
+    };
+let vowelBonusScore = function (word){
    let total=0;
    let vowels=['a','e','i','o','u'];
    for (let i = 0; i < word.length; i++) {
@@ -90,7 +63,31 @@ let bonusVowels = {
      else {total += 1}
     }
     return total;
-  } 
+  };
+let scrabbleScore =  function(word, newPointStructure){
+      let total=0;
+      for (let i = 0; i < word.length; i++){
+        total +=(newPointStructure[word[i].toLowerCase()]);
+        }
+      return total;
+    };
+
+let scrabble = {
+    name: 'Scrabble',
+    description: 'The traditional scoring algorithm.',
+    scoreFunction: scrabbleScore
+};
+
+let scoreSimple = {
+  name: "Simple Score",
+  description: "Each letter is worth 1 point",
+  scoreFunction: simpleScore
+};
+
+let bonusVowels = {
+  name: "Bonus Vowels",
+  description: "Vowels are 3 pts. consonants are 1 pts.",
+  scoreFunction: vowelBonusScore
 };
 
 let scoringAlgorithms = [scrabble, scoreSimple, bonusVowels];
@@ -102,8 +99,8 @@ function scorerPrompt() {
       while(score!=='0' && score!=='1' && score!=='2'){
         console.log(`\n ---INVALID INPUT. PLEASE FOLLOW INSTRUCTION !!--- \n`)
         score = initialPrompt(); 
-      }		
-    }
+       }		
+     }
 
   console.log(`\n Using algorithm: ${scoringAlgorithms[score].name}\n`)
 
@@ -128,7 +125,7 @@ return word.toLowerCase();
 }
 
 function runProgram(newPointStructure) {
-   scorerPrompt(); 
+   scorerPrompt();
 }
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
