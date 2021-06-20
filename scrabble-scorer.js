@@ -70,27 +70,24 @@ let scrabbleScore =  function(word, newPointStructure){
         total +=(newPointStructure[word[i].toLowerCase()]);
         }
       return total;
-    };
+  };
 
-let scrabble = {
-    name: 'Scrabble',
-    description: 'The traditional scoring algorithm.',
-    scoreFunction: scrabbleScore
-};
-
-let scoreSimple = {
+let scoringAlgorithms =[
+ {
+  name:"Scrabble",
+  description: "The traditional scoring algorithm",
+  scoreFunction:scrabbleScore
+ },
+{
   name: "Simple Score",
   description: "Each letter is worth 1 point",
-  scoreFunction: simpleScore
-};
-
-let bonusVowels = {
+  scoreFunction:simpleScore
+},
+{
   name: "Bonus Vowels",
   description: "Vowels are 3 pts. consonants are 1 pts.",
-  scoreFunction: vowelBonusScore
-};
-
-let scoringAlgorithms = [scrabble, scoreSimple, bonusVowels];
+  scoreFunction:vowelBonusScore
+}];
 
 function scorerPrompt() {
   let score = initialPrompt();
